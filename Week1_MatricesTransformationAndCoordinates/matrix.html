@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+  <ol>
+    <li>Matrix(행렬)에 대해 알아두어야 할것</li>
+    <ul>
+      <li><a href="https://ko.wikipedia.org/wiki/%ED%96%89%EB%A0%AC">위키피디아 참고</a></li>
+      <li>이것만은 기억하자</li>
+      <ul>
+        <li>복수형은 matrices</li>
+        <li>표기법</li>
+        <li>수학적 성질</li>
+        <ul>
+          <li>기본 연산(덧셈, 뺄셈, 곱셈, 그리고 나눗셈?)</li>
+          <li>단위행열(identity matrix)은 곱셈에 대한 항등원 - 우상단 부터 좌하단까지 1이고 나머지는 0인 행과 열의 수가 같은 정사각(square) 행열</li>
+          <li>역행열(inverse matrix)는 곱셈에 대한 역원</li>
+          <li>곱셈에 대한 교환법칙은 성립하지 않음 (AB != BA)</li>          
+        </ul>
+      </ul>      
+    </ul>
+    <li>GL에서의 행열과 좌표계(coordinate system)</li>
+    <ul>
+      <li><a href="http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/">참고 사이트</a></li>
+      <li>4x4 크기의 정사각 column major matrix 사용 / 오른손 좌표계를 사용</li>
+      <li>열 단위로 저장, 벡터를 곱할때는 열 벡터 사용 / 오른손으로 좌표계의 x, y, z축의 방향을 알 수 있다</li>
+      <li>행열과 변환 이동(transform) 그리고 투영(projection)</li>
+      <ul>
+        <li>우상단 3x3 부분이 rotation(회전)</li>
+        <li>최우측 열의 3x1 벡터가 x, y, z translate(이동)</li>
+        <li>a<sub>1,1</sub>, a<sub>2,2</sub>, a<sub>3,3</sub>은 x, y, z scale(배율)</li>
+        <li>점의 변환 이동은 보통 TRS(translate, rotate, scale) 순으로 적용</li>
+        <li>하지만 T x R x S 가 아니라 S x R x T 임을 명심하자</li>
+        <li>점의 화면 렌더 위치 계산법 카메라 MVP</li>
+        <ul>
+          <li>(M)odel: 객체의 변환이동 정보(4x4 행열) x 점의 좌표(열벡터)</li>
+          <li>(V)iew: 카메라 위치 기준으로 model의 변환 이동 정보로 바꿔주는 정보(look at - 4x4 행열)</li>
+          <li>(P)rojection: 카메라의 투영법(4x4 행열)</li>
+          <li>여기서도 역시 P x V x M 임을 명심하자</li>
+        </ul>
+      </ul>
+    </ul>
+  </ol>
+  <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="js,result" data-user="dansoonie" data-slug-hash="gObgjvy" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="MatricesAndCoordinateSystem">
+      <span>See the Pen <a href="https://codepen.io/dansoonie/pen/gObgjvy">
+      MatricesAndCoordinateSystem</a> by Yoon-Soo, Lee (<a href="https://codepen.io/dansoonie">@dansoonie</a>)
+      on <a href="https://codepen.io">CodePen</a>.</span>
+    </p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+</body>
+</html>
