@@ -17,9 +17,9 @@
           <li>기본 연산(덧셈, 뺄셈, 곱셈, 그리고 나눗셈?)</li>
           <li>단위행열(identity matrix)은 곱셈에 대한 항등원 - 우상단 부터 좌하단까지 1이고 나머지는 0인 행과 열의 수가 같은 정사각(square) 행열</li>
           <li>역행열(inverse matrix)는 곱셈에 대한 역원</li>
-          <li>곱셈에 대한 교환법칙은 성립하지 않음 (AB != BA)</li>          
+          <li>곱셈에 대한 교환법칙은 성립하지 않음 (AB != BA)</li>
         </ul>
-      </ul>      
+      </ul>
     </ul>
     <li>GL에서의 행열과 좌표계(coordinate system)</li>
     <ul>
@@ -31,8 +31,8 @@
         <li>우상단 3x3 부분이 rotation(회전)</li>
         <li>최우측 열의 3x1 벡터가 x, y, z translate(이동)</li>
         <li>a<sub>1,1</sub>, a<sub>2,2</sub>, a<sub>3,3</sub>은 x, y, z scale(배율)</li>
-        <li>점의 변환 이동은 보통 TRS(translate, rotate, scale) 순으로 적용</li>
-        <li>하지만 T x R x S 가 아니라 S x R x T 임을 명심하자</li>
+        <li>점의 변환 이동은 보통 SRT(scale, rotate, translate) 순으로 적용</li>
+        <li>하지만 S x R x T 가 아니라 T x R x S 임을 명심하자</li>
         <li>점의 화면 렌더 위치 계산법 카메라 MVP</li>
         <ul>
           <li>(M)odel: 객체의 변환이동 정보(4x4 행열) x 점의 좌표(열벡터)</li>
