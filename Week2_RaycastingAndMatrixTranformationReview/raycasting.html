@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+  <ol>
+    <li>광선 투사 (Ray Casting)</li>
+    <ul>
+      <li>참고자료</li>
+      <ul>
+        <li><a href="http://antongerdelan.net/opengl/raycasting.html">Mouse Picking with Ray Casting</a></li>
+        <li><a href="https://ko.wikipedia.org/wiki/%ED%96%89%EB%A0%AC">위키피디아 참고</a></li>
+      </ul>
+      <li>이것만은 기억하자</li>
+      <ul>
+        <li>사전적 의미: Ray - 광선 (ex. x-ray, gamma-ray), Cast - 던지다 (ex. cast a vote)</li>
+        <li>사용 목적: 공간상의 입체성을 확인하기 위함. 여러가지 사용 목적이 있지만 여기서는 picker의 기능만 확인. 가상의 광선을 상정하고 가장 가까운 교차면을 파악</li>
+        <li>원리: 렌더링의 반대 </li>
+        <ul>
+          <li>렌더링 -&gt; model &lt;-&gt; view &lt;-&gt; projection &lt;-&gt; normalized device space &lt;-&gt; viewport space &lt;- 광선 투사</li>
+          <ol>
+            <li>화면에서 선택한 지점에서 투사할 광선에 대한 벡터를 구함</li>
+            <li>모든 폴리곤에 대해서...</li>
+            <ol>
+              <li>폴리곤이 이루는 평면을 구한다</li>
+              <li>평면과 광선 교차점 구한다</li>
+              <li>교차점이 폴리곤안에 있는지 확인한다</li>
+            </ol>
+          </ol>
+        </ul>
+      </ul>
+      <li>기타</li>
+      <ul>
+        <li>모든 폴리곤에 대해서 테스트를 하기에는 좀 그렇다... 최적화를 생각해보자</li>
+        <li>Picker를 구현하기 위한 대표적인 대안으로는 color picker가 있다. 이 부분은 렌더링 심화부분에서 다룰 수 있으면 다루기로</li>
+      </ul>
+    </ul>
+  </ol>
+  <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="js,result" data-user="dansoonie" data-slug-hash="zYxwwOm" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="PickingWithRayCasting">
+      <span>See the Pen <a href="https://codepen.io/dansoonie/pen/zYxwwOm">
+      PickingWithRayCasting</a> by Yoon-Soo, Lee (<a href="https://codepen.io/dansoonie">@dansoonie</a>)
+      on <a href="https://codepen.io">CodePen</a>.</span>
+    </p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+</body>
+</html>
