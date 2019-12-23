@@ -26,6 +26,11 @@
       <li><a href="http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/">참고 사이트</a></li>
       <li>4x4 크기의 정사각 column major matrix 사용 / 오른손 좌표계를 사용</li>
       <li>열 단위로 저장, 벡터를 곱할때는 열 벡터 사용 / 오른손으로 좌표계의 x, y, z축의 방향을 알 수 있다</li>
+      <ul>
+        <li>위치나 방향을 나타내는 열벡터에 변환 이동을 할 경우에 왼쪽에 행렬을 곱해주게 된다</li>
+        <li>따라서 변환 이동 적용 순서와 표기 순서는 반대가 된다.</li>
+        <li>예를 들어 scale, rotate, translate을 나타내는 행렬 S, R, T가 있고 이것이 적용 순서라면 T x R x S 순으로 곱을 표기하고 계산해야 함</li>
+      </ul>
       <li>행열과 변환 이동(transform) 그리고 투영(projection)</li>
       <ul>
         <li>우상단 3x3 부분이 rotation(회전)</li>
@@ -37,6 +42,12 @@
         <ul>
           <li>(M)odel: 객체의 변환이동 정보(4x4 행열) x 점의 좌표(열벡터)</li>
           <li>(V)iew: 카메라 위치 기준으로 model의 변환 이동 정보로 바꿔주는 정보(look at - 4x4 행열)</li>
+          <ul>
+            <li>카메라의 변환이동 행렬(world transform matrix)의 역행렬</li>
+            <li>혹은 다음과 같은 방식으로 재구성할 수도 있다</li>
+            <img src="/res/img/view_matrix_decomposition.png" width="390px" height="290px "/>
+            <li>어떤 방법이 좋을까?</li>
+          </ul>
           <li>(P)rojection: 카메라의 투영법(4x4 행열)</li>
           <li>여기서도 역시 P x V x M 임을 명심하자</li>
         </ul>
