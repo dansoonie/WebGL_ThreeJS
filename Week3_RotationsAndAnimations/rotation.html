@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+  <ol>
+    <li>회전 이동(Rotation)</li>
+    <ul>
+      <li>참고자료</li>
+      <ul>
+        <li><a href="https://www.euclideanspace.com/maths/geometry/transform/index.htm">유클리디언 공간에서의 회전이동 변환</a></li>        
+      </ul>
+      <li>이것만은 기억하자</li>
+      <ul>
+        <li>사용 목적: Orientation 표현 및 추적</li>
+        <li>회전이동 표현 방법 (직관적 이해 쉬움 -> 어려움 순)</li>
+        <ul>
+          <li>오일러각 (Euler angles) - 3개의 특정 축 기준의 회전 각으로 회전 표현</li>
+          <li>행열 - 오일러각을 행열로 표현</li>
+          <li>사원수 (Quaternion) - 3차원 회전을 4차원으로 풀이</li>          
+        </ul>
+        <li>각 표현 방법 장단점</li>
+        <ul>
+          <li>오일러각 <a href="https://en.wikipedia.org/wiki/Euler_angles">위키피디아 참고</a></li>
+          <ul>
+            <li>장점: 직관적이다</li>
+            <li>단점: 다양한 사용법(회전축의 선택 및 순서), 다양한 용어(x/y/z, roll/pitch/yaw, heading/attitude/bank, theta/phi/psi, azimuth/elevation/tilt), 표현 한계</li>
+          </ul>
+          <li>행열</li>
+          <ul>
+            <li>장점: 회전 이동에 대한 행열 구하는것은 어려울 수도 있지만 일단 구하거나 누군가 구해준다면 계산만 하면 된다</li>
+            <li>단점: 행열만 봐서는 어떤 회전인지 감을 잡기 힘들다</li>
+          </ul>
+          <li>사원수 <a href="https://en.wikipedia.org/wiki/Quaternion">위키피디아 참고</a></li>
+          <ul>
+            <li>장점: 회전이동 표현 한계 없이 자유롭고, interpolation이 가능</li>
+            <li>단점: 개념을 이해하기 어려워 적용이 힘들다</li>
+          </ul>
+        </ul>
+        <li>최고의 전략</li>
+        <ul>          
+          <li>상황에 따라 적절한 표현법을 사용. (알고리즘에 따라 용이한 표기법들이 따로 존재함)</li>
+          <li>오일러각은 사실상 사용하지 않는 편이 좋다. 각 축별 회전기능을 사용해서 사용자가 본인만의 기준으로 오일러각을 사용할 수 있도록 한다.</li>
+          <li>세가지 표현법을 한번에 공부해서 각각 표기법으로의 변환을 라이브러리화 한다</li>
+          <li>항상 최종 모습은 행열 표기법을 사용함을 명심하자</li>
+        </ul>
+      </ul>
+    </ul>     
+  </ol>
+</body>
+</html>
