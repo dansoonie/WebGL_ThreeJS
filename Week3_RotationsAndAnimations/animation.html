@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+  <ol>
+    <li>Animation</li>
+    <ul>      
+      <li>이것만은 기억하자</li>
+      <ul>
+        <li>Linear interpolation: 선형 보간법</li>
+        <ul>
+          <li>T초 동안 초기값 P0에서 최종값 P1으로 변화하는 애니메이션, 애니메이션이 n초 친행 되었을때</li>
+          <li>t = n/T, 따라서 t = [0, 1]</li>          
+          <li>f(t) = P0*(1 - t) + P1*t, 원하는 성분(x, y, z, opacity, scale, 등)에 대해서 개별적으로 적용</li>          
+        </ul>
+        <li>Parametric equation: 함수를 다른 매개변수를 사용해 나타냄</li>
+        <ul>
+          <li>T초 동안 어떤 값 P0가 P1으로의 변화가 것을 매개변수 t 기준으로 수식으로 정의 되었을때, 애니메이션이 n초 진행 되었을때</li>
+          <li>t = n/T, 따라서 t = [0, 1]</li>
+          <li>상대적 변화로 기술: f(t) = P0 + (t에 대한 다항식)</li>
+          <li>절대적 값으로 변화 기술: f(t) = (t에 대한 다항식)</li>
+        </ul>
+        <li>매개변수 t에 대한 함수 적용을 통해 역동적인 애니메이션 구현</li>
+        <ul>
+          <li><a href="https://easings.net/en#">참고</a></li>
+          <li>accelerate</li>
+          <li>decelerate</li>
+          <li>overshoot</li>
+          <li>bounce</li>
+        </ul>
+      </ul>
+    </ul>     
+  </ol>
+</body>
+</html>
