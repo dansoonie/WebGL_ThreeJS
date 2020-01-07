@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+  <ol>
+    <li>셰이더 (Shaders)</li>
+    <ul>
+      <li><a href="https://shaderfrog.com/app/editor">CodePen이나 JSFiddle과 같은 Shader용 놀이터</a></li>
+      <li>이것만은 기억하자</li>
+      <ul>
+        <li>사용 목적: 유연한 렌더링 방식 제공 (programmable pipeline)</li>
+        <li>Fixed Pipeline 시절 비교</li>
+        <ul>
+          <li>vertex 값 고정, 일정한 틀 내에서 변경하더라도 cpu를 사용</li>
+          <li>색상 합성 방식 고정, 라이팅 모델 고정</li>
+        </ul>
+        <li>용어 정리</li>
+        <ul>
+          <li>GLSL: GL Shader Langauge, C 언어로부터 파생</li>
+          <li>vec, mat, bool, int, float, sampler 등등은 변수들의 형(type)</li>
+          <ul>
+            <li>vec, mat 같은 경우에는 뒤에 숫자로 성분 개수나 크기를 표시. vec3는 3개의 성분을 갖는 벡터, mat4는 4x4 행열</li>
+            <li>vec는 앞에 b가 붙으면 boolean vector, i가 붙으면 int vector, 아무 것도 없으면 float vector</li>
+            <li>mat는 모두 float</li>
+            <li>sampler는 텍스쳐에 해당하는 변수</li>
+          </ul>
+          <li>attribute, varying, uniform은 shader 외부에서 전달 받아 사용하기 위한 변수들의 종류라고 이해하면 쉬움</li>
+          <ul>
+            <li>attribute: vertex shader에서만 사용 가능하고 프로그램 외부로부터 vertex에 대한 정보들을 받기 위한 변수 종류를 의미</li>
+            <ul>
+              <li>예를 들어 vertex 좌표, 색상, 텍스쳐 좌표 등...</li>
+            </ul>
+            <li>varying: vertex shader에서 fragment shader로 값을 전달하기 위한 변수 종류</li>
+            <ul>
+              <li>vertex shader에서 varying으로 선언된 곳에 저장하고 fragment shader에서 동일한 이름으로 선언해서 넘겨받는다</li>
+            </ul>
+            <li>uniform: 외부로 부터 두 shader에서 사용할 상수에 해당하는 변수 종류</li>            
+          </ul>
+          <li>GLSL에 정의된 GL에서 제공하는 직접적으로 사용되는 변수들도 있다</li>
+          <ul>
+            <li>gl_Position, gl_FragColor, 등...</li>
+          </ul>
+        </ul>
+        <li>사용 방식</li>
+        <ul>
+          <li>vertex/fragment shader를 한 쌍으로 각각 컴파일 한다음에 링크 (결과는 프로그램이라고 부름)</li>
+          <li>렌더링 할때</li>
+          <ol>
+            <li>gl.useProgram()으로 사용할 프로그램 명시</li>
+            <li>attribute들 설정</li>
+            <ol>
+              <li>gl.bindBuffer()로 vertex 버퍼 바인딩</li>
+              <li>gl.getAttribLocation()으로 셰이더 프로그램 내에 attribute 변수의 주소를 변수의 이름으로 알아냄</li>
+              <li>gl.vertexAttribPointer()로 위에서 알아낸 주소에 실제로 사용할 attribute 값들이 저장된 array의 주소 참조하도록 한다</li>
+              <li>gl.enableVertexAttribArray()로 활성화</li>
+            </ol>
+            <li>uniform들 설정</li>
+            <ol>
+              <li>gl.getUniformLocation()으로 uniform 변수의 주소를 변수의 이름으로 알아냄</li>
+              <li>gl.getUniform()으로 uniform 값 설정</li>
+            </ol>
+            <li>gl.draw()로 그리기</li>
+          </ol>          
+        </ul>        
+      </ul>
+    </ul>     
+  </ol>
+</body>
+</html>
