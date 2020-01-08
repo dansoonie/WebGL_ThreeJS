@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+  <ol>
+    <li>색상이론</li>
+    <ul>
+      <li>이것만은 기억하자</li>
+      <ul>
+        <li>사용 목적: Fragment shader 내에서 색상 합성할 때(lighting model), 렌더링시에 블렌딩이 이루어질때</li>
+        <li>3원색</li>        
+        <ul>
+          <li>가산혼합(additive color): RGB &check;</li>
+          <li>감산혼합(subtractive color): CMYK</li>
+        </ul>
+        <li>다양한 색상 모델</li>
+        <ul>
+          <li>RGB</li>
+          <li>HSL (Hue, Saturation, Lightness)</li>
+          <li>HSV (Hue, Saturation, Value)</li>
+        </ul>
+        <li>다양한 색상 포맷</li>
+        <ul>
+          <li>RGB, RGBA (사용 비트수 다양): 비트맵에 사용</li>
+          <li>yuv: 동영상에 많이 사용</li>
+          <li>YC<sub>b</sub>C<sub>r</sub>: 옛날 영상 기기</li>
+        </ul>
+        <li>OpenGL에서</li>
+        <ul>
+          <li>주로 RGB 계열 사용</li>
+          <li>하지만 텍스쳐로 사용하는 이미지의 경우에는 당양한 포맷을 접하게 될수도 있음</li>
+        </ul>
+        <li>Lighting</li>
+        <ul>
+          <li>최종 색 = 텍스쳐 색 + ambient + directional + specular</li>
+          <li>directional과 specular를 위해서는 vertex normal attribute 있어야함(보는 각도에 따라 반사되는 빛이 다르니까)</li>
+          <li>가산 혼합이므로 어떤 종류의 빛이든지 상관 없이 합하면 합할수록 밝아짐(흰색)</li>
+        </ul>
+        <li>Blending: Source(픽셀에 칠하려는 색깔)에 Dest(픽셀의 현재 색깔)을 입히는 방식</li>
+        <ul>
+          <li>Alpha 채널을 전혀 사용하지 않으면 고려할 필요 없고, 퍼포먼스를 위해서 알파 채널을 사용하지 않기도 함</li>
+          <li>블렌딩 활성화: glEnable(GL_BLEND)</li>
+          <li>블랜딩 방식에 따라 여러 공식이 존재</li>
+          <li>우리가 기대하는 보통의 블렌딩: glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)</li>
+        </ul>
+      </ul>
+    </ul>
+  </ol>
+</body>
+</html>
