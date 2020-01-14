@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+  <ol>
+    <li>렌더링 (Rendering)</li>
+    <ul>
+      <li>이것만은 기억하자</li>
+      <ul>
+        <li>한 프레임을 그리는 작업</li>
+        <li>용어</li>
+        <ul>
+          <li>Frame buffer: 렌더링이 이루어지는곳, render target 이라고 말하기도 함</li>
+          <li>Color, Depth, Stencil buffer</li>
+          <ul>
+            <li>frame buffer를 이루고 있는 다른 버퍼들.</li>
+            <li>렌더링에 관련된 색상, 깊이, 렌더 가능 여부를 판단하기 위한 버퍼</li>
+          </ul>
+          <li></li>
+        </ul>
+        <li>고려해야 할 사항</li>
+        <ul>
+          <li>매 프레임 렌더링 할 때 새 프레임을 렌더 하는데 있어서 초기화 해야 하는 값들은 무엇인가?</li>
+          <li>한 프레임을 렌더하는데 걸리는 시간은 어느정도인가? -> 프레임레이트 계산</li>
+          <li>얼마나 자주 프레임을 렌더링 할 것인가? 언제 꼭 다시 렌더리을 해야 하는가?</li>
+          <li>객체들을 렌더링 하느데 있어서 순서를 고려할 필요가 있는가?</li>
+        </ul>
+      </ul>
+      <li>초기화</li>
+      <ul>
+        <li>작업할 프레임 버퍼 바인딩</li>
+        <li>사용할 기능들 명시(blend, depth test, scissor 등등)</li>
+        <li>필요에 따라 버퍼 초기화</li>
+        <ul>
+          <li>gl.clear(DEPTH_BUFFER 또는 STENCIL_BUFFER 또는 COLOR_BUFFER)</li>
+        </ul>
+      </ul>
+      <li>객체 렌더, 일반적인 렌더 엔진은 다음과 같이 구현</li>
+      <ul>
+        <li>객체 구성</li>
+        <ul>
+          <li>객체는 transform matrix를 가지고 있다. 이동/회전 변환시 수시로 업데이트</li>
+          <li>객체는 다른 객체를 가지고 있을 수 있다</li>
+          <li>vertex 정보를 가지고 있는 객체는 실제로 렌더링 되는 객체다</li>
+          <li>투명도나 visibility등과 같이 보여지는 형태에 대한 속성값</li>
+        </ul>
+        <li>렌더링할 객체 목록으로 부터 렌더링하기</li>
+        <ul>
+          <li>렌더러는 목록에 있는 객체를 하나하나씩 렌더</li>
+          <li>렌더러는 이동/회전 변환 행열을 저장하는 스택을 가지고 있고 초기에는 단위행열 하나만 들어있다</li>
+          <li>객체를 렌더링할때 실제 사용하는 model matrix는 스택의 가장 상단에 있는 행열 * 현재 렌더링 하는 객체의 회전/이동 변환 행열
+          <li>객체가 포함하고 있는 객체를 렌더링할 경우에 스택에 현재의 model matrix를 push하고 위와 같은 단계를 반복</li>
+        </ul>
+      </ul>
+    </ul>
+    <li><a href="https://webglfundamentals.org/webgl/lessons/webgl-render-to-texture.html">Render to texture</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Animating_textures_in_WebGL">Video as texture</a></li>
+  </ol>
+</body>
+</html>
